@@ -23,6 +23,7 @@ public class JobServices {
     private EmployerRepository employerRepository;
     @Autowired
     private JobSeekerRepository jobSeekerRepository;
+
     public Job createJob(int empId,Job job) {
         Optional<EmployerProfile> optionalEmployerProfile=employerRepository.findById(empId);
         EmployerProfile emp=optionalEmployerProfile.get();
@@ -31,8 +32,6 @@ public class JobServices {
        Job jb=jobRepository.save(job);
        System.out.println(jb);
        return jb;
-
-
 
     }
 

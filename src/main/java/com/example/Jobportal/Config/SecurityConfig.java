@@ -49,7 +49,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
+   @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -59,3 +59,4 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 }
+//nrkjndvkdnfky3iy8939239339l2medknciksl
