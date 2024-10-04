@@ -27,8 +27,15 @@ public class UserService  implements UserDetailsService {
 
     @Autowired
     private UserProfileImageRepository userProfileImageRepository;
+    public User findByUsername(String email) {
+        return userRepository.findByEmail(email);
+    }
 
-
+    public List<User> findAllUsersExcept(String email) {
+        return userRepository.findAll().stream()
+                .filter(user -> !user.getUsername().equals(email))
+                .toList();
+    }
 
 
     public void saveProfileImage(int userId, MultipartFile file) throws IOException {
@@ -81,6 +88,13 @@ public class UserService  implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username);
 
+    }
+
+    public List<User> getJobSeekers() {
+        return userRepository.findByRole("jobseeker");
+    }
+    public List<User> getEmployers() {
+        return userRepository.findByRole("employer");
     }
 }
 

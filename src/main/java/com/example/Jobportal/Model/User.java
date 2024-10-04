@@ -26,6 +26,7 @@ public class User implements UserDetails {
     private String lastName;
     private String password;
     private String role;
+    @Column(unique = true)
     private String email;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
